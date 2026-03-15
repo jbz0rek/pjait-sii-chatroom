@@ -1,36 +1,8 @@
 HELP.md
 target/
-out/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
-### Spring / local config ###
-.env
-.env.*
-*.local
-
-### Logs ###
-*.log
-logs/
-hs_err_pid*
-replay_pid*
-
-### Temp files ###
-*.tmp
-*.temp
-*.swp
-*.swo
-*~
-
-### macOS ###
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon?
-._*
-.Spotlight-V100
-.Trashes
 
 ### STS ###
 .apt_generated
@@ -42,7 +14,7 @@ Icon?
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea/
+.idea
 *.iws
 *.iml
 *.ipr
