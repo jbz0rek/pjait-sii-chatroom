@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+</head>
+<body>
+<h1>Chat room</h1>
+
+<p>
+    Logged user:
+    <strong th:text="${loggedUserName}">user</strong>
+</p>
+
+<div>
+    <h2>Messages</h2>
+
+    <div th:if="${#lists.isEmpty(messages)}">
+        No messages yet
+    </div>
+
+    <ul th:if="${not #lists.isEmpty(messages)}">
+        <li th:each="message : ${messages}">
+            <strong th:text="${message.author}">author</strong>:
+            <span th:text="${message.content}">content</span>
+            <span th:if="${message.mine}">(mine)</span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
