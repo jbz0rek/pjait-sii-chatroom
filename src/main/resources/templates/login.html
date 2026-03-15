@@ -1,32 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<h1>Login</h1>
+<body class="relative flex h-screen items-center justify-center bg-blue-500">
 
-<form th:action="@{/login}" method="post">
-    <div>
-        <label for="username">Username</label>
-        <input id="username" type="text" name="username">
-    </div>
-
-    <div>
-        <label for="password">Password</label>
-        <input id="password" type="password" name="password">
-    </div>
-
-    <button type="submit">Sign in</button>
-</form>
-
-<div th:if="${param.error}">
-    Invalid username or password
+<!-- logo -->
+<div class="absolute left-4 top-4 flex h-32 w-64 items-center justify-center p-7">
+    <img th:src="@{images/image.png}" alt="sii_logo">
 </div>
 
-<div th:if="${param.logout}">
-    You have been logged out
+<!-- formularz logowania -->
+<div class="w-full max-w-sm rounded-lg bg-white bg-opacity-75 p-8 shadow-lg">
+    <h2 class="mb-6 text-center text-2xl font-bold text-gray-800">Logowanie</h2>
+
+    <div
+            th:if="${param.error}"
+            class="justify-center rounded-md bg-rose-100 p-4 ring-1 ring-rose-200"
+    >
+        <p>Niepoprawne dane logowania</p>
+    </div>
+
+    <form method="post" th:action="@{/login}" class="space-y-4">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+
+        <div>
+            <label for="username" class="mb-1 block font-medium text-gray-700">
+                Nazwa użytkownika
+            </label>
+            <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    required
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+        </div>
+
+        <div>
+            <label for="password" class="mb-1 block font-medium text-gray-700">
+                Hasło
+            </label>
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+        </div>
+
+        <button
+                type="submit"
+                class="w-full rounded-lg bg-blue-500 py-2 font-semibold text-white transition hover:bg-blue-600"
+        >
+            Zaloguj
+        </button>
+    </form>
 </div>
 </body>
 </html>
