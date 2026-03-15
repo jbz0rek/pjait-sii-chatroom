@@ -8,10 +8,6 @@ Projekt zawiera podstawową strukturę komunikatora webowego opartego na framewo
 
 Docelowo aplikacja będzie wdrażana na klastrze Kubernetes z wykorzystaniem Apache Kafka jako szyny wiadomości.
 
-Projekt zawiera dwa podstawowe branche:
-- `starting_branch` - branch startowy
-- `final_branch` - branch z gotowym rozwiązaniem do weryfikacji zadań
-
 ## 2. Zadania do wykonania dla studentów
 
 ### 2.1. Implementacja konfiguracji Spring Security
