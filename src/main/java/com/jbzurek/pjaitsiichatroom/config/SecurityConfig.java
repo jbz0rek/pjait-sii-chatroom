@@ -44,13 +44,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/login", "/images/image.png").permitAll()
-            .anyRequest().authenticated()
-        ).formLogin(form -> form
-            .loginPage("/login")
-            .permitAll()
-        ).logout(Customizer.withDefaults());
+        http.csrf(csrf -> csrf.ignoringRequestMatchers("/ws/**"))
+            .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/login", "/images/image.png").permitAll()
+                        .requestMatchers("/ws/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .permitAll()
+                )
+                .logout(Customizer.withDefaults());
 
         return http.build();
     }
